@@ -6,19 +6,16 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:17:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/01 17:19:50 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/02 17:34:21 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
-#include <readline/readline.h>
+#include "../includes/contact.hpp"
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	std::string	str;
 
-	if (ac < 1)
-		return (0);
 	while (42)
 	{
 		std::cout << "PICK: ADD, SEARCH OR EXIT:" << std::endl << "> ";

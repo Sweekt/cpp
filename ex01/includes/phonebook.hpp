@@ -13,7 +13,7 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include "contact.hpp"
+# include "../includes/contact.hpp"
 
 class	Phonebook
 {

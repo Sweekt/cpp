@@ -2,7 +2,9 @@
 #                                                       VARIABLE                                                       #
 ########################################################################################################################
 
-SRCS	:=	megaphone.cpp
+SRCS	:=	contact.cpp		\
+			phonebook.cpp	\
+			main.cpp
 
 SRCS_D	:=	srcs/
 
@@ -10,13 +12,14 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-#HEAD	:=
+HEAD	:=	contact.hpp		\
+			phonebook.hpp
 
 HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98
 
-BIN		:=	megaphone
+BIN		:=	phonebook
 
 ########################################################################################################################
 #                                                        RULES                                                         #

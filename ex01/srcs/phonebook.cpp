@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2024/09/24 17:28:22 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/02 17:33:49 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "../includes/phonebook.hpp"
 
 Phonebook::Phonebook(void)
 {
@@ -34,14 +34,15 @@ void	Phonebook::search(void)
 
 void	Phonebook::print(Contact contact)
 {
-	std::cout << "First name:" << this->_fname << std::endl;
-	std::cout << "Last name:" << this->_lname << std::endl;
-	std::cout << "Nickname:" << this->_nick << std::endl;
-	std::cout << "Phone number:" << this->_phone_num << std::endl;
-	std::cout << "Darkest secret:" << this->_secret << std::endl;
+	std::cout << "First name:" << contact.get_fname() << std::endl;
+	std::cout << "Last name:" << contact.get_lname() << std::endl;
+	std::cout << "Nickname:" << contact.get_nick() << std::endl;
+	std::cout << "Phone number:" << contact.get_phone_num() << std::endl;
+	std::cout << "Darkest secret:" << contact.get_secret() << std::endl;
 }
 
-Contact	Phonebook::get_contact(int index)
+/*Contact	Phonebook::get_contact(int index)
 {
 
 }
+*/
