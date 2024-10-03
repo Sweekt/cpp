@@ -2,8 +2,8 @@
 #                                                       VARIABLE                                                       #
 ########################################################################################################################
 
-SRCS	:=	contact.cpp		\
-			phonebook.cpp	\
+SRCS	:=	Contact.cpp		\
+			Phonebook.cpp	\
 			main.cpp
 
 SRCS_D	:=	srcs/
@@ -12,8 +12,8 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	contact.hpp		\
-			phonebook.hpp
+HEAD	:=	Contact.hpp		\
+			Phonebook.hpp
 
 HEAD_D	:=	includes/
 

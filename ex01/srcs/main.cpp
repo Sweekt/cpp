@@ -6,26 +6,30 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:17:07 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/02 17:34:21 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/03 14:58:21 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/contact.hpp"
+#include "../includes/Phonebook.hpp"
 
 int	main(void)
 {
 	std::string	str;
+	Phonebook	phonebook;
 
+	//phonebook = Phonebook();
 	while (42)
 	{
 		std::cout << "PICK: ADD, SEARCH OR EXIT:" << std::endl << "> ";
 		std::getline(std::cin, str);
 		if (str == "ADD")
-			std::cout << "aaa" << std::endl;
-		if (str == "SEARCH")
-			std::cout << "bbb" << std::endl;
-		if (str == "EXIT")
+			phonebook.add();
+		else if (str == "SEARCH")
+			phonebook.search();
+		else if (str == "EXIT")
 			break ;
+		else
+			std::cout << "Command not found!" << std::endl;
 	}
 	return (0);
 }
