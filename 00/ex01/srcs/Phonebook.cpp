@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/09 14:26:37 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/09 16:01:35 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,45 @@ void	Phonebook::add(void)
 	this->_index += 1;
 	std::cout << "Enter first name:" << std::endl;
 	while (fname == "")
+	{
 		std::getline(std::cin, fname);
-	this->_contact[this->_index % 8 - 1].set_fname(fname);
+		if (!std::cin.good())
+			exit (1);
+	}
+	this->_contact[(this->_index - 1) % 8].set_fname(fname);
 	std::cout << "Enter last name:" << std::endl;
 	while (lname == "")
+	{
 		std::getline(std::cin, lname);
-	this->_contact[this->_index % 8 - 1].set_lname(lname);
+		if (!std::cin.good())
+			exit (1);
+	}
+	this->_contact[(this->_index - 1) % 8].set_lname(lname);
 	std::cout << "Enter nickname:" << std::endl;
 	while (nick == "")
+	{
 		std::getline(std::cin, nick);
-	this->_contact[this->_index % 8 - 1].set_nick(nick);
+		if (!std::cin.good())
+			exit (1);
+	}
+	this->_contact[(this->_index - 1) % 8].set_nick(nick);
 	std::cout << "Enter phone number:" << std::endl;
 	while (phone_num == "")
+	{
 		std::getline(std::cin, phone_num);
-	this->_contact[this->_index % 8 - 1].set_phone_num(phone_num);
+		if (!std::cin.good())
+			exit (1);
+	}
+	this->_contact[(this->_index - 1) % 8].set_phone_num(phone_num);
 	std::cout << "Enter secret:" << std::endl;
 	while (secret == "")
+	{
 		std::getline(std::cin, secret);
-	this->_contact[this->_index % 8 - 1].set_secret(secret);
-	std::cout << "New contact added at index " << this->_index % 8 << "." << std::endl;
+		if (!std::cin.good())
+			exit (1);
+	}
+	this->_contact[(this->_index - 1) % 8].set_secret(secret);
+	std::cout << "New contact added at index " << (this->_index - 1) % 8 + 1 << "." << std::endl;
 }
 
 static void	print_nine(std::string str)
@@ -83,7 +103,7 @@ static void	print_contact(Contact contact, int index)
 			print_nine(str);
 		else
 		{
-			for (int i = 0; i < 10 - s_size; i++)
+			for (int j = 0; j < 10 - s_size; j++)
 				std::cout << " ";
 			std::cout << str << "|";
 		}
@@ -94,15 +114,19 @@ static void	print_contact(Contact contact, int index)
 void	Phonebook::search(void)
 {
 	std::string index;
-	int			i;
+	int 		i;
+	int 		limit;
 
+	limit = this->_index;
+	if (limit > 8)
+		limit = 8;
 	std::cout << "_____________________________________________" << std::endl;
 	std::cout << "|          WELCOME TO THE PHONEBOOK         |" << std::endl;
 	std::cout << "|___________________________________________|" << std::endl;
 	std::cout << "|     INDEX| LAST NAME|FIRST NAME|  NICKNAME|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	for (int i = 1; i <= this->_index; i++)
-		print_contact(this->_contact[i - 1], i);
+	for (int j = 1; j <= limit; j++)
+		print_contact(this->_contact[j - 1], j);
 	std::cout << "|__________|__________|__________|__________|" << std::endl << std::endl;
 	if (this->_index == 0)
 	{
@@ -113,8 +137,10 @@ void	Phonebook::search(void)
 	while (42)
 	{
 		std::getline(std::cin, index);
+		if (!std::cin.good())
+			exit (1);
 		i = std::atoi(index.c_str());
-		if (i!= 0 && i <= this->_index && i <= 7)
+		if (i!= 0 && i <= this->_index && i <= 8)
 		{
 			this->print(this->_contact[i - 1]);
 			break;
