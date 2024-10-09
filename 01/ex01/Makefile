@@ -13,13 +13,13 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	Zombie.hpp\
+HEAD	:=	Zombie.hpp		\
 
 HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98
 
-BIN		:=	BraiiiiiiinnnzzzZ
+BIN		:=	MoarBraiiiiiiinnnzzzZ
 
 ########################################################################################################################
 #                                                        RULES                                                         #

@@ -13,7 +13,7 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	Zombie.hpp\
+HEAD	:=	Zombie.hpp		\
 
 HEAD_D	:=	includes/
 
