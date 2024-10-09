@@ -17,7 +17,6 @@ int	main(void)
 	std::string	str;
 	Phonebook	phonebook;
 
-	//phonebook = Phonebook();
 	while (42)
 	{
 		std::cout << "PICK: ADD, SEARCH OR EXIT:" << std::endl << "> ";

@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/03 17:25:04 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/09 13:12:07 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,43 +68,25 @@ static void	print_contact(Contact contact, int index)
 	int			s_size;
 
 	std::cout << "|         " << index << "|";
-
-	str = contact.get_fname();
-	s_size = str.length();
-	if (s_size == 10)
-		std::cout << str << "|";
-	else if (s_size > 10)
-		print_nine(str);
-	else
+	for (int i = 0; i < 3; i++)
 	{
-		for (int i = 0; i < 10 - s_size; i++)
-			std::cout << " ";
-		std::cout << str << "|";
-	}
-	str = contact.get_lname();
-	s_size = str.length();
-	if (s_size == 10)
-		std::cout << str << "|";
-	else if (s_size > 10)
-		print_nine(str);
-	else
-	{
-		for (int i = 0; i < 10 - s_size; i++)
-			std::cout << " ";
-		std::cout << str << "|";
-	}
-
-	str = contact.get_nick();
-	s_size = str.length();
-	if (s_size == 10)
-		std::cout << str << "|";
-	else if (s_size > 10)
-		print_nine(str);
-	else
-	{
-		for (int i = 0; i < 10 - s_size; i++)
-			std::cout << " ";
-		std::cout << str << "|";
+		if (i == 0)
+			str = contact.get_fname();
+		if (i == 1)
+			str = contact.get_lname();
+		if (i == 2)
+			str = contact.get_nick();
+		s_size = str.length();
+		if (s_size == 10)
+			std::cout << str << "|";
+		else if (s_size > 10)
+			print_nine(str);
+		else
+		{
+			for (int i = 0; i < 10 - s_size; i++)
+				std::cout << " ";
+			std::cout << str << "|";
+		}
 	}
 	std::cout << std::endl;
 }
@@ -112,6 +94,7 @@ static void	print_contact(Contact contact, int index)
 void	Phonebook::search(void)
 {
 	std::string index;
+	int			i;
 
 	std::cout << "_____________________________________________" << std::endl;
 	std::cout << "|          WELCOME TO THE PHONEBOOK         |" << std::endl;
@@ -124,26 +107,13 @@ void	Phonebook::search(void)
 	std::cout << "Choose contact to inspect:" << std::endl;
 	while (42)
 	{
-		std::getline(std::cin, index)
-		if (index == "0")
+		std::getline(std::cin, index);
+		i = std::atoi(index.c_str());
+		if (i <= this->_index && i <= 7)
 		{
-			phonebook.print(this->_contact[0]);
-			break ;
+			this->print(this->_contact[i]);
+			break;
 		}
-		else if (index == "1")
-			phonebook.print(this->_contact[1]);
-		else if (index == "2")
-			phonebook.print(this->_contact[2]);
-		else if (index == "3")
-			phonebook.print(this->_contact[3]);
-		else if (index == "4")
-			phonebook.print(this->_contact[4]);
-		else if (index == "5")
-			phonebook.print(this->_contact[5]);
-		else if (index == "6")
-			phonebook.print(this->_contact[6]);
-		else if (index == "7")
-			phonebook.print(this->_contact[7]);
 		else
 			std::cout << "Wrong input!" << std::endl;
 	}
