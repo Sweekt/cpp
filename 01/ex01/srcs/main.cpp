@@ -15,12 +15,7 @@
 int	main(void)
 {
 	Zombie	zombie;
-	Zombie	*zombie2;
 
 	zombie.set_name("prout");
 	zombie.announce();
-	zombie2 = newZombie("Paul");
-	zombie2->announce();
-	delete zombie2;
-	randomChump("Jacky");
 }
