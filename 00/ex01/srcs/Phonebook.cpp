@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/10 16:55:38 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/10 16:57:02 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,10 @@ void	Phonebook::search(void)
 			if (!isdigit(index[k]))
 				is_digit = 0;
 		if (is_digit == 0)
-			continue ;
+		{
+			std::cout << "Wrong input!" << std::endl;
+			continue;
+		}
 		i = std::atoi(index.c_str());
 		if (i >= 0 && i <= limit)
 		{
