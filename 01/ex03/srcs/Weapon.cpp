@@ -6,13 +6,13 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:02:12 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/10 14:16:05 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/10 14:23:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Weapon.hpp"
 
-Weapon::Weapon(void) {
+Weapon::Weapon(std::string type) : _type(type) {
 }
 
 Weapon::~Weapon(void) {
