@@ -3,8 +3,7 @@
 ########################################################################################################################
 
 SRCS	:=	Zombie.cpp		\
-			newZombie.cpp	\
-			randomChump.cpp	\
+			zombieHorde.cpp	\
 			main.cpp
 
 SRCS_D	:=	srcs/

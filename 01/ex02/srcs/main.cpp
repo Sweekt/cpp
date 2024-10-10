@@ -5,20 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:53:28 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/10 13:03:19 by beroy            ###   ########.fr       */
+/*   Created: 2024/10/10 13:36:10 by beroy             #+#    #+#             */
+/*   Updated: 2024/10/10 13:50:20 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#include <iostream>
 
 int	main(void)
 {
-	Zombie	*zombie;
-	int N = 8;
+	std::string	str = "HI THIS IS BRAIN";
+	std::string *ptr = &str;
+	std::string &ref = str;
 
-	zombie = zombieHorde(N, "Kaan");
-	for (int i = 0; i < N; i++)
-		zombie[i].announce();
-	delete []zombie;
+	std::cout << "memory adress of str: " << &str << std::endl;
+	std::cout << "memory adress of ptr: " << &ptr << std::endl;
+	std::cout << "memory adress of ref: " << &ref << std::endl;
+
+	std::cout << "value of str: " << str << std::endl;
+	std::cout << "value of ptr: " << *ptr << std::endl;
+	std::cout << "value of ref: " << ref << std::endl;
 }
