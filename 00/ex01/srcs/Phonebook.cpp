@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/10 16:04:43 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/10 16:55:38 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	Phonebook::search(void)
 	std::string index;
 	int 		i;
 	int 		limit;
+	int 		is_digit;
 
 	limit = this->_index;
 	if (limit > 8)
@@ -133,12 +134,18 @@ void	Phonebook::search(void)
 		std::cout << "Your phonebook is empty!" << std::endl;
 		return ((void) 0);
 	}
-	std::cout << "Choose contact to inspect:" << std::endl;
 	while (42)
 	{
+		is_digit = 1;
+		std::cout << "Choose contact to inspect:" << std::endl;
 		std::getline(std::cin, index);
 		if (!std::cin.good())
 			exit (1);
+		for (int k = 0; index[k]; k++)
+			if (!isdigit(index[k]))
+				is_digit = 0;
+		if (is_digit == 0)
+			continue ;
 		i = std::atoi(index.c_str());
 		if (i >= 0 && i <= limit)
 		{
