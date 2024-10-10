@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:01:53 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/10 14:03:26 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/10 14:06:41 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 
 class Weapon {
 	private :
+		std::string	_type;
 	public :
 		Weapon();
 		~Weapon();
+		std::string	get_type(void) const;
+		void		set_type(std::string str);
 };
 
 #endif
