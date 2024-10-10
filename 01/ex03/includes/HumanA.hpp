@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:04:53 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/10 14:04:53 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/10 14:36:15 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 # include "../includes/Weapon.hpp"
 
-class HumanA{
+class HumanA {
 	private :
+		std::string	_name;
+		Weapon		&_weapon;
 	public :
-		HumanA();
+		HumanA(std::string name, Weapon &weapon);
 		~HumanA();
+		void	attack(void) const;
 };
 
 #endif
