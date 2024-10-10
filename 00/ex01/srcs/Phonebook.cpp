@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/09 16:01:35 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/10 16:04:43 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	Phonebook::search(void)
 		if (!std::cin.good())
 			exit (1);
 		i = std::atoi(index.c_str());
-		if (i!= 0 && i <= this->_index && i <= 8)
+		if (i >= 0 && i <= limit)
 		{
 			this->print(this->_contact[i - 1]);
 			break;
