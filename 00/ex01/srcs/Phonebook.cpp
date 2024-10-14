@@ -150,7 +150,7 @@ void	Phonebook::search(void)
 			continue;
 		}
 		i = std::atoi(index.c_str());
-		if (i >= 0 && i <= limit)
+		if (i > 0 && i <= limit)
 		{
 			this->print(this->_contact[i - 1]);
 			break;
