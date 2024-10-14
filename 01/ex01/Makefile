@@ -29,7 +29,7 @@ all:	$(BIN)
 $(BIN):	$(OBJS_D) $(OBJS)
 	$(CFLAGS) -o $(BIN) $(OBJS)
 
-$(OBJS_D)%.o:	$(SRCS_D)%.cpp Makefile
+$(OBJS_D)%.o:	$(SRCS_D)%.cpp Makefile $(HEAD_D)*.hpp
 			$(CFLAGS) -I$(HEAD_D) -c $< -o $@
 
 $(OBJS_D)	:
