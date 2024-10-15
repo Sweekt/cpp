@@ -18,7 +18,7 @@ HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98
 
-BIN		:=	MoarBraiiiiiiinnnzzzZ
+BIN		:=	moarBraiiiiiiinnnzzzZ
 
 ########################################################################################################################
 #                                                        RULES                                                         #

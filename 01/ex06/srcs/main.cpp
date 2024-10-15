@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 17:51:05 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/15 17:51:05 by beroy            ###   ########.fr       */
+/*   Created: 2024/10/15 17:50:54 by beroy             #+#    #+#             */
+/*   Updated: 2024/10/15 18:24:28 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "../includes/Harl.hpp"
 
-# include <iostream>
-
-class Harl
+int	main(int ac, char**av)
 {
-private :
-	void	debug(void);
-	void	info(void);
-	void	warning(void);
-	void	error(void);
-public :
-	Harl();
-	~Harl();
-	void	complain(std::string level);
-};
+	Harl	harl;
 
-#endif
+	if (ac != 2)
+		return (0);
+	harl.complain((std::string)av[1]);
+	return (0);
+}

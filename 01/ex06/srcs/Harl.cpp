@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:50:57 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/15 18:24:28 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/15 18:50:04 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,22 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	void		(Harl::*func[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	str[4] = {"debug", "info", "warning", "error"};
+	int 		i;
 
-	for (int i = 0; i < 4; i++)
+	for (i = 0; str[i] != level && i < 4; i++){}
+	switch (i)
 	{
-		if (level == str[i])
-			return((this->*func[i])(), (void)0);
+		case 0:
+			this->debug();
+		case 1:
+			this->info();
+		case 2:
+			this->warning();
+		case 3:
+			this->error();
+			break;
+		default:
+			std::cout << "Wrong input!" << std::endl;
 	}
-	std::cout << "Wrong input!" << std::endl;
 }
