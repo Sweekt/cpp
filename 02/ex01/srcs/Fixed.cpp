@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 19:10:44 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/16 14:40:11 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/16 14:34:31 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ Fixed::Fixed(void) : _nb(0) {
 
 Fixed::~Fixed(void) {
 	std::cout << "Destructor called" << std::endl;
+}
+
+Fixed::Fixed(const int nb) : _nb(nb) {
+	std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float nb) : _nb(nb) {
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& copy) {
