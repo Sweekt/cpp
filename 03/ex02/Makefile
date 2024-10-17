@@ -4,7 +4,8 @@
 
 SRCS	:=	main.cpp		\
 			ClapTrap.cpp	\
-			ScavTrap.cpp
+			ScavTrap.cpp	\
+			FragTrap.cpp
 
 SRCS_D	:=	srcs/
 
@@ -13,13 +14,14 @@ OBJS_D	:=	objs/
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
 HEAD	:=	ClapTrap.hpp	\
-			ScavTrap.hpp
+			ScavTrap.hpp	\
+			FragTrap.hpp
 
 HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98
 
-BIN		:=	ScavTrap
+BIN		:=	FragTrap
 
 ########################################################################################################################
 #                                                        RULES                                                         #

@@ -43,6 +43,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src) {
 		this->_name = src._name;
 		this->_nrg = src._nrg;
 		this->_ad = src._ad;
+		this->_guard = src._guard;
 	}
 	return (*this);
 }

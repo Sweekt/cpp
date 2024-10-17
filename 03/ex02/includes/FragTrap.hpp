@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 20:28:34 by beroy             #+#    #+#             */
+/*   Created: 2024/10/17 17:58:37 by beroy             #+#    #+#             */
 /*   Updated: 2024/10/17 18:07:06 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/FragTrap.hpp"
-#include "../includes/ScavTrap.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int	main()
+# include "../includes/ClapTrap.hpp"
+
+class FragTrap : public ClapTrap
 {
-	FragTrap clapTrap("Josemilio");
+public :
+	FragTrap();
+	FragTrap(std::string name);
+	FragTrap(const FragTrap &copy);
+	~FragTrap();
 
-	for (int i = 0; i < 6; i++)
-		clapTrap.attack("Muriel");
-	for (int i = 0; i < 4; i++)
-		clapTrap.takeDamage(2);
-	for (int i = 0; i < 4; i++)
-		clapTrap.beRepaired(3);
-	clapTrap.attack("manuMac");
-	clapTrap.attack("capitalism");
-	clapTrap.highFivesGuys();
-	return (0);
-}
+	FragTrap	&operator=(const FragTrap &src);
+
+	void	highFivesGuys(void);
+};
+
+#endif
