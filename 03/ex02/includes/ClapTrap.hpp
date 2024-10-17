@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:28:47 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/17 13:24:06 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/17 17:00:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 #include <iostream>
 
+# define MAXHP 100
+
 class ClapTrap
 {
-private :
+protected :
 	std::string		_name;
 	unsigned int	_hp;
 	unsigned int	_nrg;

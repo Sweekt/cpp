@@ -6,31 +6,31 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:28:39 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/17 14:43:57 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/17 17:52:16 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void) : _hp(10), _nrg(10), _ad(0) {
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << "ClapTrap default constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _nrg(10), _ad(0) {
-	std::cout << "Name constructor called." << std::endl;
+	std::cout << "ClapTrap name constructor called." << std::endl;
 }
 
 ClapTrap::~ClapTrap(void) {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << "ClapTrap destructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy) {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << "ClapTrap copy constructor called." << std::endl;
 	*this = copy;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src) {
-	std::cout << "Copy assignment operator called." << std::endl;
+	std::cout << "ClapTrap copy assignment operator called." << std::endl;
 	if (this != &src)
 	{
 		this->_hp = src._hp;
@@ -76,8 +76,8 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		return (std::cout << this->_name << " wants to repair but is already full health!" << std::endl, (void)0);
 	this->_hp += amount;
 	this->_nrg -= 1;
-	if (this->_hp > 10)
-		this->_hp = 10;
+	if (this->_hp > MAXHP)
+		this->_hp = MAXHP;
 	std::cout << this->_name << " repaired and gained " << this->_hp - old_hp << " hp. ";
 	std::cout << "Current hp: " << this->_hp << "." << std::endl;
 }
