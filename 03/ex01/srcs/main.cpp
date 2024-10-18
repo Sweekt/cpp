@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 20:28:34 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/17 16:20:00 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/18 11:41:49 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int	main()
 		clapTrap.beRepaired(3);
 	clapTrap.attack("manuMac");
 	clapTrap.attack("capitalism");
+	clapTrap.guardGate();
+	clapTrap.guardGate();
 	return (0);
 }
