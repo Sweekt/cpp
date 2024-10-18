@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:05:52 by beroy             #+#    #+#             */
+/*   Created: 2024/10/18 13:08:04 by beroy             #+#    #+#             */
 /*   Updated: 2024/10/18 13:13:03 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#include "../includes/Cat.hpp"
 
-# include "../includes/Animal.hpp"
+Cat::Cat(void) : Animal("Cat") {
+	std::cout << "Cat default constructor called." << std::endl;
+}
 
-class Dog : public Animal
-{
-public :
-	Dog();
-	Dog(const Dog &copy);
-	~Dog();
+Cat::Cat(const Cat &copy) {
+	std::cout << "Cat copy constructor called." << std::endl;
+	*this = copy;
+}
 
-	Dog	&operator=(const Dog &src);
+Cat::~Cat(void) {
+	std::cout << "Cat default destructor called." << std::endl;
+}
 
-	void	makeSound() const;
-};
+Cat	&Cat::operator=(const Cat &src) {
+	if (this != &src)
+		this->_type = src._type;
+	return (*this);
+}
 
-#endif
+void	Cat::makeSound() const {
+	std::cout << "Meow meow meoooow. Gimme food human!" << std::endl;
+}
