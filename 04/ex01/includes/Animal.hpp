@@ -14,6 +14,7 @@
 # define ANIMAL_HPP
 
 # include <iostream>
+# include "../includes/Brain.hpp"
 
 class Animal
 {
