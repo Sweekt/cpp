@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:05:52 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/21 18:01:57 by beroy            ###   ########.fr       */
+/*   Created: 2024/10/18 12:28:59 by beroy             #+#    #+#             */
+/*   Updated: 2024/10/18 12:39:41 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-# include "../includes/Animal.hpp"
+# include <iostream>
 
-class Cat : public Animal
+class WrongAnimal
 {
-private :
-	Brain	*_brain;
+protected :
+	std::string	_type;
 public :
-	Cat();
-	Cat(const Cat &copy);
-	~Cat();
+	WrongAnimal();
+	WrongAnimal(std::string type);
+	WrongAnimal(const WrongAnimal &copy);
+	virtual ~WrongAnimal();
 
-	Cat	&operator=(const Cat &src);
+	WrongAnimal &operator=(const WrongAnimal &src);
+
+	std::string	getType() const;
 
 	void	makeSound() const;
-
-	std::string	get_ideas(int id) const;
-	void		set_ideas(std::string idea, int id);
 };
 
 #endif

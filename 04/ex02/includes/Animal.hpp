@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:05:52 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/21 18:01:57 by beroy            ###   ########.fr       */
+/*   Created: 2024/10/18 12:28:59 by beroy             #+#    #+#             */
+/*   Updated: 2024/10/21 17:31:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-# include "../includes/Animal.hpp"
+# include <iostream>
+# include "../includes/Brain.hpp"
 
-class Cat : public Animal
+class Animal
 {
-private :
-	Brain	*_brain;
+protected :
+	std::string	_type;
 public :
-	Cat();
-	Cat(const Cat &copy);
-	~Cat();
+	Animal();
+	Animal(std::string type);
+	Animal(const Animal &copy);
+	virtual ~Animal();
 
-	Cat	&operator=(const Cat &src);
+	Animal &operator=(const Animal &src);
 
-	void	makeSound() const;
+	std::string	getType() const;
 
-	std::string	get_ideas(int id) const;
-	void		set_ideas(std::string idea, int id);
+	virtual void	makeSound() const = 0;
 };
 
 #endif

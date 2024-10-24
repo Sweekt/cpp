@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:02:04 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/24 12:14:08 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/24 12:31:00 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 int main()
 {
 	{
+//		Animal	test;
 		const Animal *j = new Dog();
 		const Animal *i = new Cat();
 

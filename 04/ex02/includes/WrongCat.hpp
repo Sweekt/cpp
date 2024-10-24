@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:05:52 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/21 18:01:57 by beroy            ###   ########.fr       */
+/*   Updated: 2024/10/18 13:07:53 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-# include "../includes/Animal.hpp"
+# include "../includes/WrongAnimal.hpp"
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
-private :
-	Brain	*_brain;
 public :
-	Cat();
-	Cat(const Cat &copy);
-	~Cat();
+	WrongCat();
+	WrongCat(const WrongCat &copy);
+	~WrongCat();
 
-	Cat	&operator=(const Cat &src);
+	WrongCat	&operator=(const WrongCat &src);
 
 	void	makeSound() const;
-
-	std::string	get_ideas(int id) const;
-	void		set_ideas(std::string idea, int id);
 };
 
 #endif
