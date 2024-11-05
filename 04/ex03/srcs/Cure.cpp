@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:54:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/05 15:54:30 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/05 15:59:14 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Cure	&Cure::operator=(const Cure *src) {
 }
 
 void	Cure::use(ICharacter &target) {
-	std::cout << "* shoots an Cure bolt at " << target.getname << " *" << std::endl;
+	std::cout << "* heals " << target.getname << "'s wounds *" << std::endl;
 }
 
 Cure		*Cure::clone(void) const {
