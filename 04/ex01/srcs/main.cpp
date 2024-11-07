@@ -17,6 +17,18 @@
 int main()
 {
 	{
+		Animal *tab[100];
+		for (int i = 0; i < 100; i += 2)
+		{
+			tab[i] = new Cat;
+			tab[i + 1] = new Dog;
+		}
+		for (int i = 0; i < 100; i++)
+			tab[i]->makeSound();
+		for (int i = 0; i < 100; i++)
+			delete tab[i];
+	}
+	{
 		const Animal *j = new Dog();
 		const Animal *i = new Cat();
 

@@ -3,7 +3,9 @@
 ########################################################################################################################
 
 SRCS	:=	main.cpp		\
-			AMateria.cpp
+			AMateria.cpp	\
+			Ice.cpp			\
+			Cure.cpp
 
 SRCS_D	:=	srcs/
 
@@ -11,7 +13,11 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	AMateria.hpp
+HEAD	:=	AMateria.hpp		\
+			Cure.hpp			\
+			Ice.hpp				\
+			ICharacter.hpp		\
+			IMateriaSource.hpp
 
 HEAD_D	:=	includes/
 
