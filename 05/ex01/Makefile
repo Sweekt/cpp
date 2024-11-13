@@ -4,7 +4,7 @@
 
 SRCS	:=	main.cpp		\
 			Bureaucrat.cpp	\
-			From.cpp
+			Form.cpp
 
 SRCS_D	:=	srcs/
 

@@ -6,14 +6,14 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:44:34 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/12 15:54:58 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/13 14:59:38 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/Form.hpp"
 
 // Constructor & destructors
-
 Bureaucrat::Bureaucrat() : _name("kevin"), _grade(150) {
 	std::cout << "Bureaucrat default constructor called!" << std::endl;
 }
@@ -38,7 +38,6 @@ Bureaucrat::~Bureaucrat(void) {
 }
 
 // Overloaded operators
-
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &src) {
 	if (this != &src)
 		this->_grade = src._grade;
@@ -46,7 +45,6 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &src) {
 }
 
 // Public methods
-
 void	Bureaucrat::gradeUp() {
 	if (this->_grade == 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -61,8 +59,18 @@ void	Bureaucrat::gradeDown() {
 		this->_grade += 1;
 }
 
-// Setters & getters
+void	Bureaucrat::signForm(Form &src) {
+	try
+	{
+		src.beSigned(*this);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this->_name << " couldn't sign " << src.get_name() << " because grade is too low." << std::endl;
+	}
+}
 
+// Setters & getters
 int	Bureaucrat::get_grade(void) const {
 	return (this->_grade);
 }
@@ -81,19 +89,15 @@ void	Bureaucrat::set_grade(int grade) {
 }
 
 // Exceptions
-
-const char *Bureaucrat::GradeTooLowException::what(void) const throw()
-{
+const char *Bureaucrat::GradeTooLowException::what(void) const throw() {
 	return ("Grade too low");
-};
+}
 
-const char *Bureaucrat::GradeTooHighException::what(void) const throw()
-{
+const char *Bureaucrat::GradeTooHighException::what(void) const throw() {
 	return ("Grade too high");
-};
+}
 
 // Iostream overload
-
 std::ostream 	&operator<<(std::ostream &out, const Bureaucrat &src) {
 	return(out << src.get_name() <<  ", bureaucrat grade " << src.get_grade() << "." << std::endl);
 }

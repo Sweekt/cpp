@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:40:09 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/12 15:44:48 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/13 15:01:44 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 
+class Form;
+
 class Bureaucrat
 {
 private :
@@ -22,23 +24,20 @@ private :
 	int					_grade;
 public :
 	// Constructor & destructors
-
 	Bureaucrat();
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat &copy);
 	~Bureaucrat();
 
 	// Overloaded operators
-
 	Bureaucrat	&operator=(const Bureaucrat &src);
 
 	// Public methods
-
 	void	gradeUp();
 	void	gradeDown();
+	void	signForm(Form &src);
 
 	// Setters & getters
-
 	int			get_grade(void) const;
 	std::string	get_name(void) const;
 	void		set_grade(int grade);
@@ -56,7 +55,6 @@ public :
 };
 
 // Iostream overload
-
 std::ostream 	&operator<<(std::ostream &out, const Bureaucrat &src);
 
 #endif

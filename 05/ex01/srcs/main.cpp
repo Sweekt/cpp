@@ -6,48 +6,47 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:44:27 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/12 15:58:59 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/13 16:32:29 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/Form.hpp"
 
 int	main()
 {
-	Bureaucrat bob("Bob", 1);
-	Bureaucrat bob2(bob);
-	std::cout << bob;
-	std::cout << bob2;
+	std::cout << "----- Creating Bureaucrats -----" << std::endl;
+	Bureaucrat quentin("Quentin", 1);
+	Bureaucrat nancy(quentin);
+	std::cout << std::endl << "----- Trying to upgrade nancy -----" << std::endl;
 	try
 	{
-		bob.gradeUp();
-		std::cout << "Test; this should not be printed" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cerr << "Incrementing grade of " << bob.get_name() << " failed: " << e.what() << std::endl;
-	}
-	std::cout << bob;
-	try
-	{
-		Bureaucrat mich("Michel", 151);
-		std::cout << "Test; this should not be printed" << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cerr << "Creation of grade 151 bureau has failed : " << e.what() << std::endl;
-	}
-	try
-	{
-		bob2.gradeDown();
-		std::cout << "Test; this should be printed." << std::endl;
-		bob2.gradeUp();
-		std::cout << "Test; this should be printed." << std::endl;
-		bob2.gradeUp();
+		nancy.gradeUp();
 		std::cout << "Test; this shouldn't be printed." << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
+	catch (std::exception &e)
 	{
-		std::cerr << "Incrementing grade of " << bob2.get_name() << " failed: " << e.what() << std::endl;
+		std::cerr << "Incrementing grade of " << nancy.get_name() << " failed: "
+				  << e.what() << std::endl;
 	}
+	std::cout << std::endl << "----- Trying to create a form of grade 0 -----" << std::endl;
+	try
+	{
+		Form adm("adm", 0);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "Creating of form adm failed: " << e.what() << std::endl;
+	}
+	std::cout << std::endl << "----- Creating a grade 1 form -----" << std::endl;
+	Form adm("adm", 1);
+	std::cout << std::endl << "----- Downgrading nancy to grade 2 -----" << std::endl;
+	nancy.gradeDown();
+	std::cout << nancy;
+	std::cout << std::endl << "----- Nancy tries to sign adm -----" << std::endl;
+	nancy.signForm(adm);
+	std::cout << adm;
+	std::cout << std::endl << "----- Quentin tries to sign adm -----" << std::endl;
+	quentin.signForm(adm);
+	std::cout << adm;
 }
