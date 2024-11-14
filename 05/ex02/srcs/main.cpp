@@ -6,15 +6,20 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:44:27 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/13 16:32:29 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/14 17:12:27 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/AForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
+#include <cstdlib>
 
 int	main()
 {
+	srand((unsigned)time(NULL));
 	std::cout << "----- Creating Bureaucrats -----" << std::endl;
 	Bureaucrat quentin("Quentin", 1);
 	Bureaucrat nancy(quentin);
@@ -29,24 +34,16 @@ int	main()
 		std::cerr << "Incrementing grade of " << nancy.get_name() << " failed: "
 				  << e.what() << std::endl;
 	}
-	std::cout << std::endl << "----- Trying to create a form of grade 0 -----" << std::endl;
-	try
-	{
-		Form adm("adm", 0);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Creating of form adm failed: " << e.what() << std::endl;
-	}
-	std::cout << std::endl << "----- Creating a grade 1 form -----" << std::endl;
-	Form adm("adm", 1);
-	std::cout << std::endl << "----- Downgrading nancy to grade 2 -----" << std::endl;
-	nancy.gradeDown();
-	std::cout << nancy;
-	std::cout << std::endl << "----- Nancy tries to sign adm -----" << std::endl;
-	nancy.signForm(adm);
-	std::cout << adm;
-	std::cout << std::endl << "----- Quentin tries to sign adm -----" << std::endl;
-	quentin.signForm(adm);
-	std::cout << adm;
+	Bureaucrat test("Kaan", 140);
+	ShrubberyCreationForm	sForm("home");
+	RobotomyRequestForm		rForm("Bender");
+	PresidentialPardonForm	pForm("Gims");
+
+	test.signForm(sForm);
+	test.executeForm(sForm);
+	quentin.executeForm(sForm);
+	nancy.signForm(rForm);
+	nancy.executeForm(rForm);
+	quentin.signForm(pForm);
+	quentin.executeForm(pForm);
 }

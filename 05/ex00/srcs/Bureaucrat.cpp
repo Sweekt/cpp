@@ -69,9 +69,9 @@ std::string	Bureaucrat::get_name(void) const {
 
 void	Bureaucrat::set_grade(int grade) {
 	if (grade < 1)
-		;
+		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
-		;
+		throw Bureaucrat::GradeTooLowException();
 	else
 		this->_grade = grade;
 }

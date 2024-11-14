@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:48:29 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/13 17:28:25 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/14 15:39:27 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ public :
 
 	// Public methods
 	void			beSigned(Bureaucrat &src);
-	virtual void	execute(Bureaucrat const &executor) = 0;
+	virtual void	execute(Bureaucrat const &executor) const = 0;
 
 	// Setters & getters
 	int			get_sgrade(void) const;

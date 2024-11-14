@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:49:51 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/13 17:30:13 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/14 15:45:36 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ AForm::AForm(std::string name, int sgrade, int egrade) : _name(name), _signed(0)
 	}
 }
 
-AForm::AForm(const AForm &copy) {
+AForm::AForm(const AForm &copy) : _name(copy._name + "_copy"){
 	std::cout << "Form copy constructor called!" << std::endl;
 	*this = copy;
 }

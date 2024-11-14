@@ -2,9 +2,12 @@
 #                                                       VARIABLE                                                       #
 ########################################################################################################################
 
-SRCS	:=	main.cpp		\
-			Bureaucrat.cpp	\
-			Form.cpp
+SRCS	:=	main.cpp					\
+			Bureaucrat.cpp				\
+			AForm.cpp					\
+			ShrubberyCreationForm.cpp	\
+			RobotomyRequestForm.cpp		\
+			PresidentialPardonForm.cpp
 
 SRCS_D	:=	srcs/
 
@@ -12,8 +15,11 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	Bureaucrat.hpp	\
-			Form.hpp
+HEAD	:=	Bureaucrat.hpp				\
+			AForm.hpp					\
+			ShrubberyCreationForm.hpp	\
+			RobotomyRequestForm.hpp		\
+			PresidentialPardonForm.hpp
 
 HEAD_D	:=	includes/
 
