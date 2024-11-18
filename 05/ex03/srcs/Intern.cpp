@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:44:26 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/18 14:20:28 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/18 14:57:21 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,27 @@ Intern	&Intern::operator=(const Intern &src) {
 	return (*this);
 }
 
-AForm	*Intern::makeForm(std::string fname, std::string ftarget) {
-	AForm *form = NULL;
-	if (fname == "ShrubberyCreationForm")
-		form = new ShrubberyCreationForm(ftarget);
-	else if (fname == "RobotomyRequestForm")
-		form = new RobotomyRequestForm(ftarget);
-	else if (fname == "PresidentialPardonForm")
-		form = new PresidentialPardonForm(ftarget);
-	else
-		throw Intern::FormNotFound();
+AForm	*Intern::makeSForm(std::string target) {
+	AForm	*form = new ShrubberyCreationForm(target);
 	return (form);
+}
+AForm	*Intern::makeRForm(std::string target) {
+	AForm	*form = new RobotomyRequestForm(target);
+	return (form);
+}
+AForm	*Intern::makePForm(std::string target) {
+	AForm	*form = new PresidentialPardonForm(target);
+	return (form);
+}
+
+AForm	*Intern::makeForm(std::string fname, std::string ftarget) {
+	AForm	*(Intern::*func[3])(std::string target) = {&Intern::makeSForm, &Intern::makeRForm, &Intern::makePForm};
+	std::string	str[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+
+	for (int i = 0; i < 3; i++)
+		if (fname == str[i])
+			return ((this->*func[i])(ftarget));
+	throw Intern::FormNotFound();
 }
 
 // Exceptions
