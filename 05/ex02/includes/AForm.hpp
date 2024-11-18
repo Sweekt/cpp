@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:48:29 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/14 15:39:27 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/18 13:15:59 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public :
 	AForm();
 	AForm(std::string name, int sgrade, int egrade);
 	AForm(const AForm &copy);
-	~AForm();
+	virtual ~AForm();
 	
 	// Overloaded operators
 	AForm	&operator=(const AForm &src);
