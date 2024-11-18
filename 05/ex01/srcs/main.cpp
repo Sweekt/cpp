@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:44:27 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/13 16:32:29 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/18 13:33:04 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	main()
 	std::cout << std::endl << "----- Trying to create a form of grade 0 -----" << std::endl;
 	try
 	{
-		Form adm("adm", 0);
+		Form adm("adm", 0, 150);
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << "Creating of form adm failed: " << e.what() << std::endl;
 	}
 	std::cout << std::endl << "----- Creating a grade 1 form -----" << std::endl;
-	Form adm("adm", 1);
+	Form adm("adm", 1, 150);
 	std::cout << std::endl << "----- Downgrading nancy to grade 2 -----" << std::endl;
 	nancy.gradeDown();
 	std::cout << nancy;

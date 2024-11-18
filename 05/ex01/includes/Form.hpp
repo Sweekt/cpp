@@ -22,11 +22,12 @@ class Form
 private :
 	const std::string	_name;
 	bool				_signed;
-	int					_grade;
+	const int			_egrade;
+	const int 			_sgrade;
 public :
 	// Constructor & destructors
 	Form();
-	Form(std::string name, int grade);
+	Form(std::string name, int sgrade, int egrade);
 	Form(const Form &copy);
 	~Form();
 	
@@ -37,7 +38,8 @@ public :
 	void	beSigned(Bureaucrat &src);
 
 	// Setters & getters
-	int			get_grade(void) const;
+	int			get_egrade(void) const;
+	int			get_sgrade(void) const;
 	std::string	get_name(void) const;
 	bool		get_signed(void) const;
 

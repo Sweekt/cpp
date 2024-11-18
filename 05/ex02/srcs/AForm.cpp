@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:49:51 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/14 15:45:36 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/18 13:20:24 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,15 @@ AForm::AForm() : _name("default"), _signed(0), _egrade(150), _sgrade(150) {
 	std::cout << "Form default constructor called!" << std::endl;
 }
 
-AForm::AForm(std::string name, int sgrade, int egrade) : _name(name), _signed(0) {
+AForm::AForm(std::string name, int sgrade, int egrade) : _name(name), _signed(0), _egrade(egrade), _sgrade(sgrade) {
 	std::cout << "Form grade constructor called!" << std::endl;
 	if (sgrade > 150 || egrade > 150)
 		throw AForm::GradeTooLowException();
 	else if (sgrade < 1 || egrade < 1)
 		throw AForm::GradeTooHighException();
-	else
-	{
-		this->_sgrade = sgrade;
-		this->_egrade = egrade;
-	}
 }
 
-AForm::AForm(const AForm &copy) : _name(copy._name + "_copy"){
+AForm::AForm(const AForm &copy) : _name(copy._name + "_copy"), _egrade(copy.get_egrade()), _sgrade(copy.get_sgrade()) {
 	std::cout << "Form copy constructor called!" << std::endl;
 	*this = copy;
 }
@@ -43,11 +38,7 @@ AForm::~AForm() {
 // Overloaded operators
 AForm	&AForm::operator=(const AForm &src) {
 	if (this != &src)
-	{
 		this->_signed = src._signed;
-		this->_sgrade = src._sgrade;
-		this->_egrade = src._egrade;
-	}
 	return (*this);
 }
 

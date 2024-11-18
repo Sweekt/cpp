@@ -22,8 +22,8 @@ class AForm
 private :
 	const std::string	_name;
 	bool				_signed;
-	int					_egrade;
-	int 				_sgrade;
+	const int			_egrade;
+	const int 			_sgrade;
 public :
 	// Constructor & destructors
 	AForm();

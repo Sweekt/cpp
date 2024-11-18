@@ -51,6 +51,6 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 		if (random % 2 == 0)
 			std::cout << "Grrr Paw Paw, la mala est ganx. " <<  this->_target << " has been robotomized successfully!" << std::endl;
 		else
-			std::cout << "Grrr Paw Paw, la mala est ganx. Robotomy has failed successfully!" << std::endl;
+			std::cout << "Grrr Paw Paw, la mala est moins ganx. Robotomy has failed successfully!" << std::endl;
 	}
 }
