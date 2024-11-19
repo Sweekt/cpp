@@ -17,7 +17,7 @@ HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98 -g3
 
-BIN		:=	Forms
+BIN		:=	ScalarConverter
 
 ########################################################################################################################
 #                                                        RULES                                                         #
