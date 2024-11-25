@@ -29,6 +29,7 @@ AForm::AForm(std::string name, int sgrade, int egrade) : _name(name), _signed(0)
 AForm::AForm(const AForm &copy) : _name(copy._name + "_copy"), _egrade(copy.get_egrade()), _sgrade(copy.get_sgrade()) {
 	std::cout << "Form copy constructor called!" << std::endl;
 	*this = copy;
+
 }
 
 AForm::~AForm() {
