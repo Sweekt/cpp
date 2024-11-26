@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:22:33 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/26 14:03:08 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/26 14:18:12 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,41 @@ void	identify(Base *p) {
 		std::cout << "Class is unknown type." << std::endl;
 }
 
-//void	identify(Base &p) {
-//
-//}
+void	identify(Base &p) {
+	void	*foo = NULL;
+	Base	&unused = (Base &)foo;
+	int	i = 0;
+
+	try {
+		unused = dynamic_cast<A&>(p);
+	}
+	catch (std::exception &e) {
+		i += 1;
+	}
+	try {
+		unused = dynamic_cast<B&>(p);
+	}
+	catch (std::exception &e) {
+		i += 2;
+	}
+	try {
+		unused = dynamic_cast<C&>(p);
+	}
+	catch (std::exception &e) {
+		i += 4;
+	}
+	if (i == 3)
+		std::cout << "Class is C type." << std::endl;
+	else if (i == 5)
+		std::cout << "Class is B type." << std::endl;
+	else if (i == 6)
+		std::cout << "Class is A type." << std::endl;
+	(void)unused;
+}
 
 int main(void)
 {
 	Base *rdm = generate();
 	identify(rdm);
+	identify(*rdm);
 }
