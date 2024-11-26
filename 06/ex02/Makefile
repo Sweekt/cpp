@@ -2,8 +2,10 @@
 #                                                       VARIABLE                                                       #
 ########################################################################################################################
 
-SRCS	:=	Data.cpp		\
-			Serializer.cpp	\
+SRCS	:=	Base.cpp	\
+			A.cpp		\
+			B.cpp		\
+			C.cpp		\
 			main.cpp
 
 SRCS_D	:=	srcs/
@@ -12,14 +14,16 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	Data.hpp		\
-			Serializer.hpp
+HEAD	:=	Base.hpp	\
+           	A.hpp		\
+           	B.hpp		\
+           	C.hpp
 
 HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98 -g3
 
-BIN		:=	Serializer
+BIN		:=	Identifier
 
 ########################################################################################################################
 #                                                        RULES                                                         #

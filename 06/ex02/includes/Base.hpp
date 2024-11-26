@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 17:04:35 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/26 12:02:25 by beroy            ###   ########.fr       */
+/*   Created: 2024/11/26 12:10:32 by beroy             #+#    #+#             */
+/*   Updated: 2024/11/26 13:59:59 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
 # include <iostream>
-# include <stdint.h>
 
-class Data;
-
-class Serializer
+class Base
 {
-private :
+protected :
 	// Constructors & destructor
-	Serializer();
-	Serializer(const Serializer &copy);
-	~Serializer();
+	Base();
+	Base(const Base &copy);
 
 	// Overloaded operators
-	Serializer &operator=(const Serializer &src);
+	Base &operator=(const Base &src);
 public :
-	// Public methods
-	static uintptr_t	serialize(Data* ptr);
-	static Data*		deserialize(uintptr_t raw);
+	virtual ~Base();
 };
 
 #endif
