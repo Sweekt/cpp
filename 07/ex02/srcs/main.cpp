@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 18:08:51 by beroy             #+#    #+#             */
+/*   Updated: 2024/11/27 18:09:17 by beroy            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include <Array.hpp>
+#include "../includes/Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
@@ -27,27 +39,21 @@ int main(int, char**)
             return 1;
         }
     }
-    try
-    {
+    try {
         numbers[-2] = 0;
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
-    try
-    {
+    try {
         numbers[MAX_VAL] = 0;
     }
-    catch(const std::exception& e)
-    {
+    catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
 
     for (int i = 0; i < MAX_VAL; i++)
-    {
         numbers[i] = rand();
-    }
     delete [] mirror;//
     return 0;
 }
