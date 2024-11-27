@@ -10,13 +10,13 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=	whatever.hpp
+HEAD	:=
 
 HEAD_D	:=	includes/
 
 CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98 -g3
 
-BIN		:=	Func
+BIN		:=	Iter
 
 ########################################################################################################################
 #                                                        RULES                                                         #
