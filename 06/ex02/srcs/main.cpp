@@ -86,4 +86,5 @@ int main(void)
 	Base *rdm = generate();
 	identify(rdm);
 	identify(*rdm);
+	delete (rdm);
 }
