@@ -13,9 +13,14 @@
 #ifndef ITER_HPP
 # define ITER_HPP
 
+# include <iostream>
+
 template <typename T>
-void min(const T& a, const T& b) {
-	;
+void iter(T *array, size_t arr_len, void (*foo)(T &)) {
+	if (array == NULL || foo == NULL)
+		return ;
+	for (size_t i = 0; i < arr_len; i++)
+		foo(array[i]);
 }
 
 #endif
