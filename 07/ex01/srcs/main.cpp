@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:27:17 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/28 15:41:08 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/28 17:25:22 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,35 @@ int main()
 	::iter(a, sizeof(a) / sizeof(char), roll);
 	std::cout << "Roll    : " << a[0] << a[1] << a[2] << a[3] << a[4] << std::endl;
 }
+
+//class Awesome
+//{
+//public:
+//	Awesome( void ) : _n( 42 ) { return; }
+//	int get( void ) const { return this->_n; }
+//private:
+//	int _n;
+//};
+//
+//std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+//{
+//	o << rhs.get();
+//	return o;
+//}
+//
+//template< typename T >
+//void print( T& x )
+//{
+//	std::cout << x << std::endl;
+//	return;
+//}
+//
+//int main() {
+//	int tab[] = { 0, 1, 2, 3, 4 };
+//	Awesome tab2[5];
+//
+//	iter( tab, 5, print<int> );
+//	iter( tab2, 5, print<Awesome> );
+//
+//	return 0;
+//}
