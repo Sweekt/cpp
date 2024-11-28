@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:15:12 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/27 18:56:38 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/28 15:56:36 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-template< typename T>
+template <typename T>
 class Array
 {
 private :
@@ -33,30 +33,31 @@ public :
 	};
 	Array(const Array &copy) : _size(copy._size) {
 		std::cout << "Array copy constructor called!" << std::endl;
+		this->_array = NULL;
 		*this = copy;
 	};
 	~Array() {
 		std::cout << "Array default destructor called!" << std::endl;
-		delete []_array;
+		if (_array != NULL)
+			delete []_array;
 	};
 
 	// Overloaded operators
 	Array &operator=(const Array &src) {
-		if (_array != NULL)
-			delete []_array;
+		delete []_array;
 		this->_size = src._size;
 		this->_array = new T[this->_size];
 		if (this != &src)
-			for (int i = 0; i < _size; i++)
+			for (unsigned int i = 0; i < _size; i++)
 				this->_array[i] = src._array[i];
-		return (this);
+		return (*this);
 	};
 
 	T &operator[](unsigned int i) {
 		if (i >= this->_size || this->_array == NULL)
 		{
-			std::cout << "Index leads out of bonds." << std::endl;
-			throw (Array<T>::InvalidIndexException);
+			std::cout << "Index: " << i << std::endl;
+			throw (Array<T>::InvalidIndexException());
 		}
 		return (this->_array[i]);
 	}
@@ -66,6 +67,15 @@ public :
 	public:
 		virtual const char	*what() const throw();
 	};
+
+	void	size(void) const {
+		return (this->_size);
+	}
 };
+
+template <typename T>
+const char *Array<T>::InvalidIndexException::what(void) const throw() {
+	return ("Index leads out of bonds.");
+}
 
 #endif

@@ -6,11 +6,13 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:08:51 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/27 18:09:17 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/28 15:50:35 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "../includes/Array.hpp"
 
 #define MAX_VAL 750
@@ -30,7 +32,6 @@ int main(int, char**)
         Array<int> tmp = numbers;
         Array<int> test(tmp);
     }
-
     for (int i = 0; i < MAX_VAL; i++)
     {
         if (mirror[i] != numbers[i])

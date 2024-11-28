@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:27:17 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/27 16:54:37 by beroy            ###   ########.fr       */
+/*   Updated: 2024/11/28 15:41:08 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	brainfk(char &c)
 		c = '.';
 }
 
-void	roll(char &c)
+int	roll(char &c)
 {
 	if (c == '.')
 		c = '-';
@@ -35,15 +35,16 @@ void	roll(char &c)
 		c = '>';
 	else if (c == '>')
 		c = '.';
+	return (0);
 }
 
 int main()
 {
-	char str[] = "J'aime pas trop les lentilles corail.";
+	char a[] = {'L', 'a', 'p', 'i', 'n'};
 
-	std::cout << "Initial string: " << str << std::endl;
-	iter(str, sizeof(str) / sizeof(char), brainfk);
-	std::cout << std::endl << "String after brainfking: " << str << std::endl;
-	iter(str, sizeof(str) / sizeof(char), roll);
-	std::cout << std::endl << "String after roll: " << str << std::endl;
+	std::cout << "Original: " << a[0] << a[1] << a[2] << a[3] << a[4] << std::endl;
+	::iter(a, sizeof(a) / sizeof(char), brainfk);
+	std::cout << "Brainfk : " << a[0] << a[1] << a[2] << a[3] << a[4] << std::endl;
+	::iter(a, sizeof(a) / sizeof(char), roll);
+	std::cout << "Roll    : " << a[0] << a[1] << a[2] << a[3] << a[4] << std::endl;
 }

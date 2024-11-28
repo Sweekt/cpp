@@ -10,7 +10,7 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.cpp=$(OBJS_D)%.o)
 
-HEAD	:=
+HEAD	:=	Array.hpp
 
 HEAD_D	:=	includes/
 
