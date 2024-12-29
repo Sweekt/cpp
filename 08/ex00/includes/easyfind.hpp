@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:53:05 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/28 17:53:05 by beroy            ###   ########.fr       */
+/*   Updated: 2024/12/29 17:56:30 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 # define EASYFIND_HPP
 
 # include <iostream>
+# include <vector>
 
-template <typename T>
-T	*easyfind(T *array, int tofind) {
-	for (size_t	i = 0; array[i]; i++) {
-		if (array[i] == tofind)
-			return (array + i);
-	}
-	throw (std::exception());
+template < typename T >
+typename T::iterator easyfind(T &array, int tofind) {
+	typename T::iterator it = std::find(array.begin(), array.end(), tofind);
+	if (it == array.end())
+		throw (std::exception());
+//	return (it);
 }
 
 #endif

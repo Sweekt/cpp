@@ -76,7 +76,7 @@ int main()
 //	Awesome tab2[5];
 //
 //	iter( tab, 5, print<int> );
-//	iter( tab2, 5, print<Awesome> );
+//	iter( tab2, 5,` print<Awesome> );
 //
 //	return 0;
 //}

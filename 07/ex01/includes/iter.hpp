@@ -23,12 +23,5 @@ void iter(T *array, U arr_len, R (*foo)(const T &)) {
 		foo(array[i]);
 }
 
-template <typename T, typename R, typename U>
-void iter(T *array, U arr_len, R (*foo)(T &)) {
-	if (array == NULL || foo == NULL)
-		return ;
-	for (U i = 0; i < arr_len; i++)
-		foo(array[i]);
-}
 
 #endif
