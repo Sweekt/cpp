@@ -110,8 +110,8 @@ void	Span::insert(std::vector<int> range) {
 		try {
 			addNumber(*it);
 		}
-		catch (std::exception) {
-			std::cout << "Stack is full!" << std::endl;
+		catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
 		}
 	}
 }

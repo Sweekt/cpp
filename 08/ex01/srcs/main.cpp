@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 12:52:34 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/10 15:30:34 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/10 17:46:06 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ int main(void) {
 	try {
 		aSpan.shortestSpan();
 	}
-	catch (std::exception) {
-		std::cout << "This should be printed!" << std::endl;
+	catch (std::exception &e) {
+		std::cout << "This should be printed! " << e.what() << std::endl;
 	}
 	// Initializing the spans
 	for (size_t i = 0; i < 200; i++) {
 		try {
 			aSpan.addNumber(rand() % 200);
 		}
-		catch (std::exception) {
-			std::cout << "Span is full!" << std::endl;
+		catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
 			break ;
 		}
 	}
