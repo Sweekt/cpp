@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:53:05 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/10 12:44:07 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/10 12:45:02 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ typename T::iterator easyfind(T &array, int tofind) {
 		throw (ElementNotFoundException());
 	return (it);
 }
-
 
 #endif
