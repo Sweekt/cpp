@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:31:27 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/13 18:40:07 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/13 18:41:16 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	check_ext(std::string filename, std::string ext) {
 
 int	main(int ac, char **av) {
 	if (ac != 2) {
-		std::cout << "Wrong input! Run with ./BitcoinExchange <filename.txt>" << std::endl;
+		std::cout << "Wrong input! Run with ./BitcoinExchange <filename.txt>." << std::endl;
 		return (0);
 	}
 	BitcoinExchange	btc("data.csv");
@@ -83,6 +83,11 @@ int	main(int ac, char **av) {
 	}
 	std::ifstream	inputFile(filename.c_str());
 	std::string		line;
+
+	if (!inputFile) {
+		std::cout << "File failed to open!" << std::endl;
+		return (0);
+	}
 	std::getline(inputFile, line);
 	while (std::getline(inputFile, line)) {
 		std::stringstream ss(line);
