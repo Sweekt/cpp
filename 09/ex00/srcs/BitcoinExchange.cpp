@@ -6,22 +6,20 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:32:03 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/10 19:14:22 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/13 17:42:02 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/BitcoinExchange.hpp"
-#include <fstream>
-#include <sstream>
 
-
-std::map<std::string, float>	map_init(void) {
+std::map<std::string, float>	map_init(std::string file) {
 	std::map<std::string, float> myMap;
-	std::ifstream inputFile("../data.csv");
+	std::ifstream inputFile(file.c_str());
 
 	if (!inputFile)
 		throw (std::exception());
 	std::string line;
+	std::getline(inputFile, line);
 	while (std::getline(inputFile, line)) {
 		std::stringstream ss(line);
 		std::string key;
@@ -38,8 +36,24 @@ std::map<std::string, float>	map_init(void) {
 }
 
 // Constructors & destructor
-BitcoinExchange::BitcoinExchange(void) : _btcvalue(map_init()) {
+BitcoinExchange::BitcoinExchange(void) {
 	std::cout << "BitcoinExchange default constructor called!" << std::endl;
+	try {
+		_btcvalue = map_init("data.csv");
+	}
+	catch (std::exception) {
+		std::cout << "File not found or failed to open!" << std::endl;
+	}
+}
+
+BitcoinExchange::BitcoinExchange(std::string file) {
+	std::cout << "BitcoinExchange default constructor called!" << std::endl;
+	try {
+		_btcvalue = map_init(file);
+	}
+	catch (std::exception) {
+		std::cout << "File not found or failed to open!" << std::endl;
+	}
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
@@ -60,3 +74,14 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src) {
 }
 
 // Public methods
+float	BitcoinExchange::Get_Btc_Value(std::string date) {
+	std::map<std::string, float>::iterator	it;
+
+	it = this->_btcvalue.find(date);
+	if (it == this->_btcvalue.end() || it->second == -1.0) {
+		this->_btcvalue[date] = -1.0;
+		it = this->_btcvalue.find(date);
+		it--;
+	}
+	return (it->second);
+}
