@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:31:27 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/13 18:41:16 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/14 12:13:12 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool isValidDate(int day, int month, int year) {
 }
 
 bool isValidDateString(const std::string& date) {
-	if (date.length() != 11) {
+	if (date.size() != 11) {
 		return (false);
 	}
 	for (size_t i = 0; i < date.size() - 1; ++i) {
