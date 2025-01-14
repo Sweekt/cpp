@@ -42,7 +42,7 @@ BitcoinExchange::BitcoinExchange(void) {
 		_btcvalue = map_init("data.csv");
 	}
 	catch (std::exception) {
-		std::cout << "File not found or failed to open!" << std::endl;
+		std::cerr << "File not found or failed to open!" << std::endl;
 	}
 }
 
@@ -52,7 +52,7 @@ BitcoinExchange::BitcoinExchange(std::string file) {
 		_btcvalue = map_init(file);
 	}
 	catch (std::exception) {
-		std::cout << "File not found or failed to open!" << std::endl;
+		std::cerr << "File not found or failed to open!" << std::endl;
 	}
 }
 

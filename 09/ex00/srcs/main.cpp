@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:31:27 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/14 12:13:12 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/14 12:13:20 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,20 @@ bool	check_ext(std::string filename, std::string ext) {
 
 int	main(int ac, char **av) {
 	if (ac != 2) {
-		std::cout << "Wrong input! Run with ./BitcoinExchange <filename.txt>." << std::endl;
+		std::cerr << "Wrong input! Run with ./BitcoinExchange <filename.txt>." << std::endl;
 		return (0);
 	}
 	BitcoinExchange	btc("data.csv");
 	std::string		filename(av[1]);
 	if (!check_ext(filename, ".txt")) {
-		std::cout << "Wrong file extension!" << std::endl;
+		std::cerr << "Wrong file extension!" << std::endl;
 		return (0);
 	}
 	std::ifstream	inputFile(filename.c_str());
 	std::string		line;
 
 	if (!inputFile) {
-		std::cout << "File failed to open!" << std::endl;
+		std::cerr << "File failed to open!" << std::endl;
 		return (0);
 	}
 	std::getline(inputFile, line);
@@ -101,11 +101,11 @@ int	main(int ac, char **av) {
 				std::cout << key << "=> " << value << " = " << value * btc.Get_Btc_Value(key) << std::endl;
 			}
 			catch (std::exception &e) {
-				std::cout << "Error: " << e.what() << std::endl;
+				std::cerr << "Error: " << e.what() << std::endl;
 			}
 		}
 		else
-			std::cout << "Error: bad input => " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 	}
 }
 
