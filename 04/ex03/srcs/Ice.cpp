@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/Ice.hpp"
+#include "../includes/Character.hpp"
 
 Ice::Ice(void) : AMateria("ice") {
 	std::cout << "Ice materia default constructor called." << std::endl;
@@ -31,7 +32,7 @@ Ice	&Ice::operator=(const Ice *src) {
 }
 
 void	Ice::use(ICharacter &target) {
-	std::cout << "* shoots an ice bolt at " << target.getname << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 Ice		*Ice::clone(void) const {

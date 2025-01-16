@@ -6,11 +6,12 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 15:54:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/11/05 15:59:14 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/16 18:43:01 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Cure.hpp"
+#include "../includes/Character.hpp"
 
 Cure::Cure(void) : AMateria("cure") {
 	std::cout << "Cure materia default constructor called." << std::endl;
@@ -31,7 +32,7 @@ Cure	&Cure::operator=(const Cure *src) {
 }
 
 void	Cure::use(ICharacter &target) {
-	std::cout << "* heals " << target.getname << "'s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 Cure		*Cure::clone(void) const {

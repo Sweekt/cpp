@@ -2,10 +2,12 @@
 #                                                       VARIABLE                                                       #
 ########################################################################################################################
 
-SRCS	:=	main.cpp		\
-			AMateria.cpp	\
-			Ice.cpp			\
-			Cure.cpp
+SRCS	:=	main.cpp			\
+			AMateria.cpp		\
+			Ice.cpp				\
+			Cure.cpp			\
+			Character.cpp		\
+			MateriaSource.cpp
 
 SRCS_D	:=	srcs/
 
@@ -17,7 +19,9 @@ HEAD	:=	AMateria.hpp		\
 			Cure.hpp			\
 			Ice.hpp				\
 			ICharacter.hpp		\
-			IMateriaSource.hpp
+			IMateriaSource.hpp	\
+			Character.hpp		\
+			Materiasource.hpp
 
 HEAD_D	:=	includes/
 

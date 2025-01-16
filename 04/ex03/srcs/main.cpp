@@ -6,11 +6,15 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:05:57 by beroy             #+#    #+#             */
-/*   Updated: 2024/10/24 13:05:57 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/16 18:47:04 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/AMateria.hpp"
+#include "../includes/Character.hpp"
+#include "../includes/Ice.hpp"
+#include "../includes/Cure.hpp"
+#include "../includes/MateriaSource.hpp"
 
 int main()
 {
