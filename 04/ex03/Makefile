@@ -25,9 +25,9 @@ HEAD	:=	AMateria.hpp		\
 
 HEAD_D	:=	includes/
 
-CFLAGS	:=	c++ -Wall -Wextra -Werror -std=c++98
+CFLAGS	:=	c++ -Wall -Wextra -Werror -g3 -std=c++98
 
-BIN		:=	Maroon5
+BIN		:=	MateriaMess
 
 ########################################################################################################################
 #                                                        RULES                                                         #

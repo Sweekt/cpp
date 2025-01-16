@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 19:08:30 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/16 19:08:36 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/16 19:37:46 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // Constructors & destructor
 MateriaSource::MateriaSource(void) {
 	std::cout << "MateriaSource default constructor called!" << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->_book[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &copy) {
@@ -43,6 +45,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &src) {
 // Public methods
 void	MateriaSource::learnMateria(AMateria *m) {
 	bool	foo = false;
+
 	for (int i = 0; i < 4; i++) {
 		if (this->_book[i] == NULL)
 		{
@@ -57,10 +60,10 @@ void	MateriaSource::learnMateria(AMateria *m) {
 
 AMateria	*MateriaSource::createMateria(std::string const &type) {
 	for (int i = 0; i < 4; i++) {
-		if (this->_book[i]->getType() == type) {
+		if (this->_book[i] != NULL && this->_book[i]->getType() == type) {
 			return (this->_book[i]->clone());
 		}
 	}
 	std::cout << "Materia type not learnt yet!" << std::endl;
-	return (NULL);
+	return (0);
 }
