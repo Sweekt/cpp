@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 19:11:33 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/13 19:57:12 by beroy            ###   ########.fr       */
+/*   Updated: 2025/01/17 18:48:24 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,34 @@ void	RPN::calculator(std::string expr) {
 	if (expr.empty())
 		throw (InvalidExpr());
 	for (size_t i = 0; i < expr.size(); i++) {
-		if (!valid_char(expr[i]))
+		if (!valid_char(expr[i])) {
+			while (this->_rpn.size() != 0)
+				this->_rpn.pop();
 			throw (InvalidExpr());
+		}
 		if (expr[i] == ' ')
 			continue ;
 		else if (isDigit(expr[i]))
 			this->_rpn.push(expr[i] - 48);
 		else {
-			if (this->_rpn.size() < 2)
+			if (this->_rpn.size() < 2) {
+				while (this->_rpn.size() != 0)
+					this->_rpn.pop();
 				throw (InvalidExpr());
+			}
 			tmp = this->_rpn.top();
 			this->_rpn.pop();
 			this->_rpn.top() = doOp(expr[i], tmp, this->_rpn.top());
 		}
 	}
-	if (this->_rpn.size() > 1)
+	if (this->_rpn.size() > 1) {
+		while (this->_rpn.size() != 0)
+			this->_rpn.pop();
 		throw (InvalidExpr());
+	}
 	this->_result = this->_rpn.top();
-	this->_rpn.pop();
+	while (this->_rpn.size() != 0)
+		this->_rpn.pop();
 }
 
 int	RPN::get_result(void) {
