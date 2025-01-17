@@ -49,7 +49,7 @@ void	MateriaSource::learnMateria(AMateria *m) {
 	for (int i = 0; i < 4; i++) {
 		if (this->_book[i] == NULL)
 		{
-			this->_book[i] = m->clone();
+			this->_book[i] = m;
 			foo = true;
 			break;
 		}
