@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:43:57 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/30 17:43:57 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/01 18:14:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ PMergeMe &PMergeMe::operator=(const PMergeMe &src){
 
 // Public methods
 void	PMergeMe::sortVec(std::vector<int> vec) {
-	for (int i = 0; vec.size() / i <= 2; i *= 2) {
+	for (int i = 1;  vec.size() / i >= 1; i *= 2) {
 		std::cout << "i = " << i << " size = " << vec.size() << std::endl;
 	}
 }

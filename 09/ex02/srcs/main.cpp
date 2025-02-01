@@ -6,12 +6,27 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 08:34:41 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/30 09:42:57 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/01 18:11:51 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PMergeMe.hpp"
 
+std::vector<int>	fill_vec(int ac, char **av)
+{
+	std::vector<int>	vec;
+	for (int i = 1; i < ac; i++) {
+		vec.push_back(atol(av[i]));
+	}
+	return (vec);
+}
+
 int main(int ac, char **av) {
+	std::vector<int>	vec;
+
+	if (ac < 2)
+		return (0);
+	vec = fill_vec(ac, av);
+	PMergeMe::sortVec(vec);
 	return (0);
 }

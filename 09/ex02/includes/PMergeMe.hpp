@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:02:23 by beroy             #+#    #+#             */
-/*   Updated: 2025/01/30 17:37:43 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/01 18:06:52 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <cstdlib>
+#include <cmath>
 
 class PMergeMe {
 private :
