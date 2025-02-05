@@ -6,12 +6,12 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:43:57 by beroy             #+#    #+#             */
-/*   Updated: 2025/02/05 14:16:39 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/05 19:56:23 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PMergeMe.hpp"
-
+#include "algorithm"
 // Constructors & destructor
 PMergeMe::PMergeMe(void) {
 }
@@ -77,18 +77,6 @@ void	init_odd(std::vector<int> vec, std::vector<int> *odd, size_t pair_size) {
 	display_vec(*odd);
 } // GOOD
 
-//void	init_pend(std::vector<int> vec, std::vector<int> *pend, size_t pair_size) {
-//	size_t i = (pair_size * 2);
-//	if (i >= vec.size())
-//		return ;
-//	for (; i < vec.size(); i += pair_size) {
-//		for (size_t j = 0; j < pair_size / 2; j++) {
-//			pend->push_back(vec[(i / 2) + j]);
-//		}
-//	}
-//	display_vec(*pend);
-//} // NEED FIX SHOULD OUTPUT 8 2 0 9 14 3 1 5 4 7
-
 void	init_pend(std::vector<int> vec, std::vector<int> *pend, size_t pair_size) {
 	size_t i = (pair_size * 1.5);
 	if (i >= vec.size())
@@ -115,10 +103,33 @@ void	init_main(std::vector<int> vec, std::vector<int> *main, size_t pair_size) {
 	display_vec(*main);
 } // GOOD
 
+void	binary_insert(std::vector<int> to_insert, std::vector<int> *main, size_t pair_size) {
+	std::vector<int>::iterator	it;
+	for (size_t j = (pair_size * 0.5) - 1; j < to_insert.size(); j += pair_size * 0.5) {
+		it = main->begin() + (pair_size * 0.5) - 1;
+		for (; it < main->end(); it += pair_size * 0.5) {
+			if (*it > to_insert[j])
+				break ;
+		}
+		if (it > main->end())
+			it = main->end() - 1;
+		it += 1 - (pair_size * 0.5);
+		for (ssize_t k = 0; k < pair_size * 0.5; k++) {
+			main->insert(it, to_insert[j - k]);
+			it = std::find(main->begin(), main->end(), to_insert[j - k]);
+		}
+	}
+	display_vec(*main);
+}
+
+void	insert(std::vector<int> *vec, std::vector<int> *main, std::vector<int> pend, std::vector<int> odd, size_t pair_size) {
+	(void) vec;
+	binary_insert(pend, main, pair_size);
+	binary_insert(odd, main, pair_size);
+}
+
 void	PMergeMe::sortVec(std::vector<int> vec) {
-	std::vector<int>	main;
-	std::vector<int>	pend;
-	std::vector<int>	odd;
+	std::vector<int>	main, pend, odd;
 	size_t i = 2;
 
 	std::cout << "INITIAL STACK:" << std::endl;
@@ -139,6 +150,7 @@ void	PMergeMe::sortVec(std::vector<int> vec) {
 		init_odd(vec, &odd, i);
 		init_pend(vec, &pend, i);
 		init_main(vec, &main, i);
+		insert(&vec, &main, pend, odd, i);
 		odd.clear();
 		pend.clear();
 		main.clear();
