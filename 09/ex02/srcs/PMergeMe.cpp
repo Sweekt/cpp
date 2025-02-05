@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:43:57 by beroy             #+#    #+#             */
-/*   Updated: 2025/02/03 19:59:28 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/05 14:16:39 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,29 @@ void	init_odd(std::vector<int> vec, std::vector<int> *odd, size_t pair_size) {
 	display_vec(*odd);
 } // GOOD
 
+//void	init_pend(std::vector<int> vec, std::vector<int> *pend, size_t pair_size) {
+//	size_t i = (pair_size * 2);
+//	if (i >= vec.size())
+//		return ;
+//	for (; i < vec.size(); i += pair_size) {
+//		for (size_t j = 0; j < pair_size / 2; j++) {
+//			pend->push_back(vec[(i / 2) + j]);
+//		}
+//	}
+//	display_vec(*pend);
+//} // NEED FIX SHOULD OUTPUT 8 2 0 9 14 3 1 5 4 7
+
 void	init_pend(std::vector<int> vec, std::vector<int> *pend, size_t pair_size) {
-	size_t i = (pair_size * 2);
+	size_t i = (pair_size * 1.5);
 	if (i >= vec.size())
 		return ;
-	for (; i < vec.size(); i += pair_size) {
-		for (size_t j = 0; j < pair_size / 2; j++) {
-			pend->push_back(vec[(i / 2) + j]);
+	for (; i < vec.size() - 0.5 * pair_size; i += pair_size) {
+		for (size_t j = pair_size / 2; j > 0; j--) {
+			pend->push_back(vec[i - j]);
 		}
 	}
 	display_vec(*pend);
-} // NEED FIX SHOULD OUTPUT 8 2 0 9 14 3 1 5 4 7
+} // GOOD
 
 void	init_main(std::vector<int> vec, std::vector<int> *main, size_t pair_size) {
 	size_t i = pair_size / 2;
