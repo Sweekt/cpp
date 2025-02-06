@@ -28,6 +28,5 @@ int main(int ac, char **av) {
 		return (0);
 	vec = fill_vec(ac, av);
 	PMergeMe::sortVec(vec);
-//	std::cout << "Jacob: " << PMergeMe::jacob(1) << std::endl;
 	return (0);
 }

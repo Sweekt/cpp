@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:43:57 by beroy             #+#    #+#             */
-/*   Updated: 2025/02/05 19:56:23 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/06 11:19:07 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,6 @@ PMergeMe &PMergeMe::operator=(const PMergeMe &src){
 	return (*this);
 }
 
-void	display_vec(std::vector<int> vec) {
-	std::cout << "vec :";
-	for (size_t i = 0; i < vec.size(); i++)
-		std::cout << " " << vec[i];
-	std::cout << std::endl;
-}
-
-void	ft_swap(std::vector<int> *vec, size_t i, size_t j) {
-	int tmp = (*vec)[i];
-	(*vec)[i] = (*vec)[j];
-	(*vec)[j] = tmp;
-}
-
-void	swap_pair(std::vector<int> *vec, size_t pos, size_t pair_size) {
-	for (size_t i = 0; i < pair_size / 2; i++) {
-		ft_swap(vec, pos - i, (pos - pair_size / 2) - i);
-	}
-}
-
 // Public methods
 size_t	jacob(size_t max) {
 	size_t	n1 = 0, n = 1, tmp;
@@ -66,7 +47,28 @@ size_t	depth(size_t pair_size) {
 	return (i);
 }
 
-void	init_odd(std::vector<int> vec, std::vector<int> *odd, size_t pair_size) {
+void	display_vec(std::vector<int> vec, std::string name) {
+	std::cout << name;
+	for (size_t i = 0; i < vec.size(); i++)
+		std::cout << " " << vec[i];
+	std::cout << std::endl;
+}
+
+
+// Vector sorting
+void	swapVec(std::vector<int> *vec, size_t i, size_t j) {
+	int tmp = (*vec)[i];
+	(*vec)[i] = (*vec)[j];
+	(*vec)[j] = tmp;
+}
+
+void	swapPairVec(std::vector<int> *vec, size_t pos, size_t pair_size) {
+	for (size_t i = 0; i < pair_size / 2; i++) {
+		swapVec(vec, pos - i, (pos - pair_size / 2) - i);
+	}
+}
+
+void	initOddVec(std::vector<int> vec, std::vector<int> *odd, size_t pair_size) {
 	size_t	start = (vec.size() / pair_size) * pair_size;
 	size_t	odd_size = vec.size() % pair_size;
 	if (odd_size < pair_size / 2)
@@ -74,22 +76,20 @@ void	init_odd(std::vector<int> vec, std::vector<int> *odd, size_t pair_size) {
 	for (size_t i = start - 1 + pair_size / 2; i >= start; start++) {
 		odd->push_back(vec[start]);
 	}
-	display_vec(*odd);
-} // GOOD
+}
 
-void	init_pend(std::vector<int> vec, std::vector<int> *pend, size_t pair_size) {
+void	initPendVec(std::vector<int> vec, std::vector<int> *pend, size_t pair_size) {
 	size_t i = (pair_size * 1.5);
 	if (i >= vec.size())
 		return ;
-	for (; i < vec.size() - 0.5 * pair_size; i += pair_size) {
+	for (; i <= vec.size() - 0.5 * pair_size; i += pair_size) {
 		for (size_t j = pair_size / 2; j > 0; j--) {
 			pend->push_back(vec[i - j]);
 		}
 	}
-	display_vec(*pend);
-} // GOOD
+}
 
-void	init_main(std::vector<int> vec, std::vector<int> *main, size_t pair_size) {
+void	initMainVec(std::vector<int> vec, std::vector<int> *main, size_t pair_size) {
 	size_t i = pair_size / 2;
 	if (pair_size > vec.size())
 		return ;
@@ -100,10 +100,9 @@ void	init_main(std::vector<int> vec, std::vector<int> *main, size_t pair_size) {
 		for (size_t j = 0; j < pair_size / 2; j++)
 			main->push_back(vec[i + j]);
 	}
-	display_vec(*main);
-} // GOOD
+}
 
-void	binary_insert(std::vector<int> to_insert, std::vector<int> *main, size_t pair_size) {
+void	binaryInsertVec(std::vector<int> to_insert, std::vector<int> *main, size_t pair_size) {
 	std::vector<int>::iterator	it;
 	for (size_t j = (pair_size * 0.5) - 1; j < to_insert.size(); j += pair_size * 0.5) {
 		it = main->begin() + (pair_size * 0.5) - 1;
@@ -112,47 +111,57 @@ void	binary_insert(std::vector<int> to_insert, std::vector<int> *main, size_t pa
 				break ;
 		}
 		if (it > main->end())
-			it = main->end() - 1;
-		it += 1 - (pair_size * 0.5);
+			it = main->end();
+		else
+			it += 1 - (pair_size * 0.5);
 		for (ssize_t k = 0; k < pair_size * 0.5; k++) {
 			main->insert(it, to_insert[j - k]);
 			it = std::find(main->begin(), main->end(), to_insert[j - k]);
 		}
 	}
-	display_vec(*main);
 }
 
-void	insert(std::vector<int> *vec, std::vector<int> *main, std::vector<int> pend, std::vector<int> odd, size_t pair_size) {
+void	addSpareVec(std::vector<int> *vec, std::vector<int> *main) {
+	for (size_t i = main->size(); i < vec->size(); i++) {
+		main->push_back((*vec)[i]);
+	}
+	display_vec(*main, "main:");
+	vec->clear();
+	for (size_t i = 0; i < main->size(); i++) {
+		vec->push_back((*main)[i]);
+	}
+}
+
+void	insertVec(std::vector<int> *vec, std::vector<int> *main, std::vector<int> pend, std::vector<int> odd, size_t pair_size) {
 	(void) vec;
-	binary_insert(pend, main, pair_size);
-	binary_insert(odd, main, pair_size);
+	binaryInsertVec(pend, main, pair_size);
+	binaryInsertVec(odd, main, pair_size);
+	addSpareVec(vec, main);
 }
 
 void	PMergeMe::sortVec(std::vector<int> vec) {
 	std::vector<int>	main, pend, odd;
 	size_t i = 2;
-
-	std::cout << "INITIAL STACK:" << std::endl;
-	display_vec(vec);
-	std::cout << "PAIR SORTING:" << std::endl;
-
 	for (;  vec.size() / i >= 1; i *= 2) {
 		for (size_t j = i - 1; j < vec.size(); j += i) {
 			if (vec[j] < vec[j - i / 2]) {
-				swap_pair(&vec, j, i);
+				swapPairVec(&vec, j, i);
 			}
 		}
-		display_vec(vec);
 	}
 	i /= 2;
 	for (; i >= 2; i /= 2) {
 		std::cout << "pair size: " << i << std::endl;
-		init_odd(vec, &odd, i);
-		init_pend(vec, &pend, i);
-		init_main(vec, &main, i);
-		insert(&vec, &main, pend, odd, i);
+		initOddVec(vec, &odd, i);
+		initPendVec(vec, &pend, i);
+		initMainVec(vec, &main, i);
+		display_vec(odd, "odd:");
+		display_vec(pend, "pend:");
+		display_vec(main, "main:");
+		insertVec(&vec, &main, pend, odd, i);
 		odd.clear();
 		pend.clear();
 		main.clear();
+		display_vec(vec, "vec:");
 	}
 }
