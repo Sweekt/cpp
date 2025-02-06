@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:43:57 by beroy             #+#    #+#             */
-/*   Updated: 2025/02/06 12:50:55 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/06 13:33:58 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t	jacob(size_t n) {
 }
 
 template <typename T>
-void	displayArray(T array, std::string name) {
+void	PMergeMe::displayArray(T array, std::string name) {
 	std::cout << name;
 	for (size_t i = 0; i < array.size(); i++)
 		std::cout << " " << array[i];
@@ -165,4 +165,125 @@ void	PMergeMe::sortVec(std::vector<int> vec) {
 		pend.clear();
 		main.clear();
 	}
+	displayArray(vec, "After: ");
+}
+
+// Deque sorting
+void	swapDeq(std::deque<int> *deq, size_t i, size_t j) {
+	int tmp = (*deq)[i];
+	(*deq)[i] = (*deq)[j];
+	(*deq)[j] = tmp;
+}
+
+void	swapPairDeq(std::deque<int> *deq, size_t pos, size_t pair_size) {
+	for (size_t i = 0; i < pair_size / 2; i++) {
+		swapDeq(deq, pos - i, (pos - pair_size / 2) - i);
+	}
+}
+
+void	initOddDeq(std::deque<int> deq, std::deque<int> *odd, size_t pair_size) {
+	size_t	start = (deq.size() / pair_size) * pair_size;
+	size_t	odd_size = deq.size() % pair_size;
+	if (odd_size < pair_size / 2)
+		return ;
+	for (size_t i = start - 1 + pair_size / 2; i >= start; start++) {
+		odd->push_back(deq[start]);
+	}
+}
+
+void	initPendDeq(std::deque<int> deq, std::deque<int> *pend, size_t pair_size) {
+	size_t i = (pair_size * 1.5);
+	if (i >= deq.size())
+		return ;
+	for (; i <= deq.size() - 0.5 * pair_size; i += pair_size) {
+		for (size_t j = pair_size / 2; j > 0; j--) {
+			pend->push_back(deq[i - j]);
+		}
+	}
+}
+
+void	initMainDeq(std::deque<int> deq, std::deque<int> *main, size_t pair_size) {
+	size_t i = pair_size / 2;
+	if (pair_size > deq.size())
+		return ;
+	for (size_t j = 0; j < i; j++) {
+		main->push_back(deq[j]);
+	}
+	for (; i + 0.5 * pair_size <= deq.size(); i += pair_size) {
+		for (size_t j = 0; j < pair_size / 2; j++)
+			main->push_back(deq[i + j]);
+	}
+}
+
+void	binaryInsertDeq(std::deque<int> to_insert, std::deque<int> *main, size_t pair_size) {
+	std::deque<int>::iterator	it;
+	size_t	old_jac = 0;
+	size_t	jac;
+	bool	done = false;
+	if (to_insert.size() == 0)
+		return ;
+	for (size_t i = 0; !done; i++)
+	{
+		jac = jacob(i);
+		if (jac > to_insert.size() / (pair_size * 0.5)) {
+			jac = to_insert.size() / (pair_size * 0.5);
+			done = true;
+		}
+		for (ssize_t j = jac * (pair_size * 0.5) - 1; j >= old_jac * (pair_size * 0.5); j -= pair_size * 0.5) {
+			it = main->begin() + (pair_size * 0.5) - 1;
+			for (; it < main->end(); it += pair_size * 0.5) {
+				if (*it > to_insert[j])
+					break;
+			}
+			if (it > main->end())
+				it = main->end();
+			else
+				it += 1 - (pair_size * 0.5);
+			for (ssize_t k = 0; k < pair_size * 0.5; k++) {
+				main->insert(it, to_insert[j - k]);
+				it = std::find(main->begin(), main->end(), to_insert[j - k]);
+			}
+		}
+		old_jac = jac;
+	}
+}
+
+void	addSpareDeq(std::deque<int> *deq, std::deque<int> *main) {
+	for (size_t i = main->size(); i < deq->size(); i++) {
+		main->push_back((*deq)[i]);
+	}
+	deq->clear();
+	for (size_t i = 0; i < main->size(); i++) {
+		deq->push_back((*main)[i]);
+	}
+}
+
+void	insertDeq(std::deque<int> *deq, std::deque<int> *main, std::deque<int> pend, std::deque<int> odd, size_t pair_size) {
+	(void) deq;
+	binaryInsertDeq(pend, main, pair_size);
+	binaryInsertDeq(odd, main, pair_size);
+	addSpareDeq(deq, main);
+}
+
+void	PMergeMe::sortDeq(std::deque<int> deq) {
+	std::deque<int>	main, pend, odd;
+	size_t i = 2;
+	for (;  deq.size() / i >= 1; i *= 2) {
+		for (size_t j = i - 1; j < deq.size(); j += i) {
+			if (deq[j] < deq[j - i / 2]) {
+				swapPairDeq(&deq, j, i);
+			}
+		}
+	}
+	i /= 2;
+	for (; i >= 2; i /= 2) {
+		initOddDeq(deq, &odd, i);
+		initPendDeq(deq, &pend, i);
+		initMainDeq(deq, &main, i);
+		insertDeq(&deq, &main, pend, odd, i);
+		odd.clear();
+		pend.clear();
+		main.clear();
+	}
+	//displayArray(deq, "Deq:");
 }

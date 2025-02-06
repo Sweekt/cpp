@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:02:23 by beroy             #+#    #+#             */
-/*   Updated: 2025/02/03 13:01:07 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/06 13:21:12 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <deque>
 #include <cstdlib>
 #include <cmath>
+#include <ctime>
 
 class PMergeMe {
 private :
@@ -26,5 +27,7 @@ private :
 	PMergeMe &operator=(const PMergeMe &src);
 public :
 	static void	sortVec(std::vector<int> vec);
-//	static void	sortDeq(std::deque<int> deq);
+	static void	sortDeq(std::deque<int> deq);
+	template <typename T>
+	static void	displayArray(T array, std::string name);
 };
