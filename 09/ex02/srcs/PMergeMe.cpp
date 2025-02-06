@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:43:57 by beroy             #+#    #+#             */
-/*   Updated: 2025/02/06 12:49:45 by beroy            ###   ########.fr       */
+/*   Updated: 2025/02/06 12:50:55 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,4 @@ void	PMergeMe::sortVec(std::vector<int> vec) {
 		pend.clear();
 		main.clear();
 	}
-	displayArray(vec, "Vec:");
 }
